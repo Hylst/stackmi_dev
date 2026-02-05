@@ -1,0 +1,109 @@
+/* ===================================
+   STAKMI - Custom CSS
+   Personnalisation du thème Bootstrap
+   =================================== */
+
+/* Variables custom */
+:root {
+    --stakmi-primary: #2c3e50;
+    --stakmi-gold: #f39c12;
+    --stakmi-dark: #1a1a1a;
+    --stakmi-light: #ecf0f1;
+}
+
+/* Typographie */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--stakmi-dark);
+}
+
+/* Navigation custom */
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.navbar-brand:hover {
+    transform: scale(1.1);
+}
+
+/* Cartes avec effet hover */
+.card {
+    transition: all 0.3s ease;
+    border: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card-title {
+    color: var(--stakmi-primary);
+    font-weight: 600;
+}
+
+/* Titres avec accent doré */
+h1.display-4 {
+    color: var(--stakmi-primary);
+    font-weight: 700;
+}
+
+.lead {
+    color: #555;
+    font-size: 1.25rem;
+}
+
+/* Footer stylisé */
+footer {
+    background: linear-gradient(135deg, var(--stakmi-primary) 0%, var(--stakmi-dark) 100%);
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* Boutons custom (pour + tard) */
+.btn-stakmi {
+    background-color: var(--stakmi-gold);
+    border: none;
+    color: white;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.btn-stakmi:hover {
+    background-color: #e67e22;
+    color: white;
+}
+
+/* Animations subtiles */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.text-center {
+    animation: fadeInUp 0.8s ease;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+    h1.display-4 {
+        font-size: 2rem;
+    }
+
+    .card {
+        margin-bottom: 1rem;
+    }
+}
