@@ -12,8 +12,8 @@ class Database
 
     private function __construct()
     {
-        // Pour l'instant on simule le chargement du .env
-        // On affinera quand on installera "phpdotenv" via Composer plus tard
+        // pour l'instant simule le .env
+        // install "phpdotenv" via Composer + tard
         $host = "localhost";
         $dbname = "stakmi";
         $user = "root";
