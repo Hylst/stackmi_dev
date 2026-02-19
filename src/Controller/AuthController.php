@@ -22,10 +22,11 @@ class AuthController extends AbstractController
     // traite la soumission du formulaire d'inscription (POST)
     public function register(): void
     {
-        // recup et nettoyage basique des donnees POST
+        // recup et nettoyage des donnees POST
         $prenom = trim($_POST['prenom'] ?? '');
         $nom = trim($_POST['nom'] ?? '');
         $email = trim($_POST['email'] ?? '');
+        $telephone = trim($_POST['telephone'] ?? '') ?: null; // null si champ vide
         $mdp = $_POST['mot_de_passe'] ?? '';
         $mdpConfirm = $_POST['mot_de_passe_confirm'] ?? '';
 
@@ -53,24 +54,23 @@ class AuthController extends AbstractController
             $errors[] = 'Cet email est déjà utilisé.';
         }
 
-        // si erreurs : on rend le formulaire avec les messages
+        // si erreurs : re-affichage formulaire avec messages + repopulation champs
         if (!empty($errors)) {
             $this->render('auth/register', [
                 'titre' => 'Inscription - Stakmi',
                 'errors' => $errors,
-                'old' => compact('prenom', 'nom', 'email'), // repopule les champs
+                'old' => compact('prenom', 'nom', 'email', 'telephone'),
             ]);
             return;
         }
 
-        // hash argon2id avant insertion
+        // hash argon2id avant insertion en BDD
         $hash = password_hash($mdp, PASSWORD_ARGON2ID);
 
-        // insertion en BDD
-        $this->userRepo->create($prenom, $nom, $email, $hash);
+        // insertion (telephone est null si non saisi)
+        $this->userRepo->create($prenom, $nom, $email, $hash, $telephone);
 
-        // redirection vers la page de connexion avec message de succes
-        // (sessions gerees dans login, pas encore disponible ici)
+        // redirection vers login avec flag de succes
         header('Location: /login?registered=1');
         exit;
     }
