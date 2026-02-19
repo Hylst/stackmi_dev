@@ -5,10 +5,10 @@
 
 /* Variables custom */
 :root {
-    --stakmi-primary: #2c3e50;
-    --stakmi-gold: #f39c12;
-    --stakmi-dark: #1a1a1a;
-    --stakmi-light: #ecf0f1;
+    --stakmi-primary: #2c3e50; /* bleu ardoise foncé : élégant & pro */
+    --stakmi-gold: #f39c12;    /* rappelle les pièces de collection, le luxe */
+    --stakmi-dark: #1a1a1a;    /* noir presque pur pour la profondeur + contraste */
+    --stakmi-light: #ecf0f1;   /* gris très clair pour des arrière-plan doux */
 }
 
 /* Typographie */
@@ -31,7 +31,7 @@ body {
 /* Cartes avec effet hover */
 .card {
     transition: all 0.3s ease;
-    border: none;
+    border: none;               /* Enlève la bordure Bootstrap */
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -47,7 +47,7 @@ body {
 
 /* Titres avec accent doré */
 h1.display-4 {
-    color: var(--stakmi-primary);
+    color: var(--stakmi-gold);
     font-weight: 700;
 }
 
